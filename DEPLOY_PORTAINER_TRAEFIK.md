@@ -1,10 +1,10 @@
-# Deploy do site `delvec.tech` com Portainer + Traefik
+# Deploy do site `delvechio.tech` com Portainer + Traefik
 
 Este site é estático e roda em Nginx dentro de um container Docker.
 
 ## 1. DNS
 
-No painel do domínio `delvec.tech`, crie:
+No painel do domínio `delvechio.tech`, crie:
 
 - Tipo `A`
 - Nome `@`
@@ -14,7 +14,7 @@ Opcional:
 
 - Tipo `CNAME`
 - Nome `www`
-- Valor: `delvec.tech`
+- Valor: `delvechio.tech`
 
 ## 2. Network do Traefik
 
@@ -75,7 +75,7 @@ docker compose up -d --build
 Depois acesse:
 
 ```txt
-https://delvec.tech
+https://delvechio.tech
 ```
 
 ## 6. Checklist se não abrir
@@ -85,4 +85,4 @@ https://delvec.tech
 - Traefik está rodando.
 - O nome da network externa está correto.
 - O nome do certresolver está correto.
-- Não existe outro container usando `Host(\`delvec.tech\`)`.
+- Não existe outro container usando `Host(\`delvechio.tech\`)`.
