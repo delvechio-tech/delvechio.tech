@@ -1,29 +1,29 @@
 services:
   delvechio-tech-site:
-    build:
-      context: .
+    image: ghcr.io/delvechio-tech/delvechio.tech:latest
     container_name: delvechio-tech-site
     restart: unless-stopped
     networks:
-      - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=traefik"
-      - "traefik.http.routers.delvechio-tech.rule=Host(`delvechio.tech`)"
-      - "traefik.http.routers.delvechio-tech.entrypoints=websecure"
-      - "traefik.http.routers.delvechio-tech.tls=true"
-      - "traefik.http.routers.delvechio-tech.tls.certresolver=letsencrypt"
-      - "traefik.http.services.delvechio-tech.loadbalancer.server.port=80"
+      - DelvechioNet
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=DelvechioNet"
+        - "traefik.http.routers.delvechio-tech.rule=Host(`delvechio.tech`)"
+        - "traefik.http.routers.delvechio-tech.entrypoints=websecure"
+        - "traefik.http.routers.delvechio-tech.tls=true"
+        - "traefik.http.routers.delvechio-tech.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.delvechio-tech.loadbalancer.server.port=80"
 
-      - "traefik.http.routers.delvechio-tech-www.rule=Host(`www.delvechio.tech`)"
-      - "traefik.http.routers.delvechio-tech-www.entrypoints=websecure"
-      - "traefik.http.routers.delvechio-tech-www.tls=true"
-      - "traefik.http.routers.delvechio-tech-www.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.delvechio-tech-www.middlewares=delvechio-tech-www-redirect"
-      - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.regex=^https://www\\.delvechio\\.tech/(.*)"
-      - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.replacement=https://delvechio.tech/$${1}"
-      - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.permanent=true"
+        - "traefik.http.routers.delvechio-tech-www.rule=Host(`www.delvechio.tech`)"
+        - "traefik.http.routers.delvechio-tech-www.entrypoints=websecure"
+        - "traefik.http.routers.delvechio-tech-www.tls=true"
+        - "traefik.http.routers.delvechio-tech-www.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.delvechio-tech-www.middlewares=delvechio-tech-www-redirect"
+        - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.regex=^https://www\\.delvechio\\.tech/(.*)"
+        - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.replacement=https://delvechio.tech/$${1}"
+        - "traefik.http.middlewares.delvechio-tech-www-redirect.redirectregex.permanent=true"
 
 networks:
-  traefik:
+  DelvechioNet:
     external: true
