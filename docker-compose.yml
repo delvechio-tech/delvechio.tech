@@ -1,0 +1,29 @@
+services:
+  delvec-tech-site:
+    build:
+      context: .
+    container_name: delvec-tech-site
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.delvec-tech.rule=Host(`delvec.tech`)"
+      - "traefik.http.routers.delvec-tech.entrypoints=websecure"
+      - "traefik.http.routers.delvec-tech.tls=true"
+      - "traefik.http.routers.delvec-tech.tls.certresolver=letsencrypt"
+      - "traefik.http.services.delvec-tech.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.delvec-tech-www.rule=Host(`www.delvec.tech`)"
+      - "traefik.http.routers.delvec-tech-www.entrypoints=websecure"
+      - "traefik.http.routers.delvec-tech-www.tls=true"
+      - "traefik.http.routers.delvec-tech-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.delvec-tech-www.middlewares=delvec-tech-www-redirect"
+      - "traefik.http.middlewares.delvec-tech-www-redirect.redirectregex.regex=^https://www\\.delvec\\.tech/(.*)"
+      - "traefik.http.middlewares.delvec-tech-www-redirect.redirectregex.replacement=https://delvec.tech/$${1}"
+      - "traefik.http.middlewares.delvec-tech-www-redirect.redirectregex.permanent=true"
+
+networks:
+  traefik:
+    external: true
