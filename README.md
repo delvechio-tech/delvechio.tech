@@ -9,10 +9,10 @@ Primeira versao estatica do site principal `delvechio.tech`.
 - `script.js`: menu mobile e comportamento do header.
 - `assets/`: logos e favicon oficiais copiados do MIV.
 
-## Direcao
+## Direção
 
 O site apresenta a Delvechio Tech como uma empresa de tecnologia aplicada a
-presenca, aquisicao e atendimento, com foco inicial em clinicas e corretores /
-imobiliarias.
+presença, aquisição e atendimento, com foco inicial em clínicas e corretores /
+imobiliárias.
 
-CTA principal: Solicitar Diagnostico Digital via WhatsApp.
+CTA principal: Solicitar Diagnóstico Digital via WhatsApp.
