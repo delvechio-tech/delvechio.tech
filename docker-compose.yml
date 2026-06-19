@@ -10,7 +10,7 @@ services:
       unzip -q /tmp/site.zip -d /tmp/site;
       SRC=/tmp/site/delvechio.tech-main;
       rm -rf /usr/share/nginx/html/*;
-      cp -r $$SRC/index.html $$SRC/styles.css $$SRC/script.js $$SRC/assets /usr/share/nginx/html/;
+      cp -r $$SRC/index.html $$SRC/styles.css $$SRC/script.js $$SRC/assets $$SRC/clinicas $$SRC/imobiliarias $$SRC/agente-ia $$SRC/pequenas-empresas $$SRC/templates $$SRC/sitemap.xml $$SRC/robots.txt /usr/share/nginx/html/;
       cp $$SRC/nginx.conf /etc/nginx/conf.d/default.conf;
       nginx -g 'daemon off;';
       "
