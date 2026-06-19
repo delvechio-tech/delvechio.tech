@@ -845,7 +845,7 @@ h2 .accent-text {
   align-items: center;
   min-height: auto;
   overflow: hidden;
-  padding: 168px 24px 104px;
+  padding: 188px 24px 104px;
   text-align: left;
 }
 
@@ -867,7 +867,7 @@ h2 .accent-text {
 .page-hero h1 {
   max-width: 880px;
   margin: 20px 0 0;
-  font-size: clamp(3.15rem, 4.9vw, 5.95rem);
+  font-size: clamp(3rem, 4.45vw, 5.35rem);
   line-height: 0.94;
   letter-spacing: -0.075em;
 }
