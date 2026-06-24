@@ -62,6 +62,57 @@ const setupMobileMenu = () => {
   });
 };
 
+
+const pushTrackingEvent = (payload) => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+};
+
+const setupTrackingEvents = () => {
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const link = target?.closest("a[href]");
+
+    if (!link) return;
+
+    const href = link.getAttribute("href") || "";
+    const normalizedHref = href.toLowerCase();
+    const isWhatsapp =
+      normalizedHref.includes("wa.me/") ||
+      normalizedHref.includes("api.whatsapp.com") ||
+      normalizedHref.includes("web.whatsapp.com");
+
+    if (!isWhatsapp) return;
+
+    const linkText = link.textContent.replace(/\s+/g, " ").trim();
+    const decodedHref = (() => {
+      try {
+        return decodeURIComponent(href);
+      } catch {
+        return href;
+      }
+    })();
+    const hasDiagnosticIntent = /diagn[óo]stico/i.test(`${linkText} ${decodedHref}`);
+
+    pushTrackingEvent({
+      event: "click_whatsapp",
+      click_text: linkText.slice(0, 120),
+      page_path: window.location.pathname,
+      whatsapp_destination: href.split("?")[0],
+      lead_intent: hasDiagnosticIntent ? "diagnostico" : "whatsapp",
+    });
+
+    if (hasDiagnosticIntent) {
+      pushTrackingEvent({
+        event: "generate_lead",
+        lead_source: "whatsapp",
+        lead_intent: "diagnostico",
+        page_path: window.location.pathname,
+      });
+    }
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => header?.classList.add("loaded"), 100);
   setTimeout(revealHeroTitle, 450);
@@ -70,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScrollReveal();
   setupFlashlightCards();
   setupMobileMenu();
+  setupTrackingEvents();
 });
 
 window.addEventListener("scroll", updateHeader, { passive: true });
