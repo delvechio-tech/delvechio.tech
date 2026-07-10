@@ -260,7 +260,7 @@ img {
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  padding: 124px 24px 92px;
+  padding: 124px 24px 150px;
   text-align: center;
 }
 
@@ -1519,7 +1519,7 @@ h2 .accent-text {
 
   .hero {
     min-height: 100svh;
-    padding: 112px 18px 88px;
+    padding: 112px 18px 150px;
     text-align: left;
   }
 
