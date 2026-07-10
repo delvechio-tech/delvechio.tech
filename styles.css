@@ -424,7 +424,7 @@ h2 .accent-text {
   display: grid;
   justify-items: center;
   gap: 9px;
-  color: rgba(245, 245, 245, 0.48);
+  color: rgba(245, 245, 245, 0.62);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -930,7 +930,7 @@ h2 .accent-text {
   gap: 16px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
-  color: rgba(245, 245, 245, 0.54);
+  color: rgba(245, 245, 245, 0.62);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -953,7 +953,7 @@ h2 .accent-text {
 .system-metric small,
 .system-flow small,
 .system-status small {
-  color: rgba(245, 245, 245, 0.48);
+  color: rgba(245, 245, 245, 0.62);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.14em;
