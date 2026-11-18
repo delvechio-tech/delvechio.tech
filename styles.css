@@ -311,7 +311,7 @@ img {
 .section-kicker {
   margin: 0;
   color: var(--orange);
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Sora, Inter, sans-serif;
   font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.26em;
@@ -326,7 +326,7 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Sora, Inter, sans-serif;
   letter-spacing: -0.06em;
 }
 
@@ -478,7 +478,7 @@ h2 .accent-text {
 .marquee-content b {
   margin: 0 22px;
   color: rgba(245, 245, 245, 0.58);
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Sora, Inter, sans-serif;
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.24em;
@@ -1270,7 +1270,7 @@ h2 .accent-text {
 .template-preview b {
   max-width: 260px;
   margin-top: 10px;
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Sora, Inter, sans-serif;
   font-size: clamp(1.6rem, 2.6vw, 2.4rem);
   line-height: 0.98;
   letter-spacing: -0.05em;
@@ -1629,4 +1629,44 @@ h2 .accent-text {
   .final-cta .hero-actions {
     justify-content: stretch;
   }
+}
+
+/* Três apoios — grade de 3 colunas (18/11/2026).
+   Os cards ficam mais estreitos que os de 2 colunas, então o título,
+   o corpo e a altura mínima precisam acompanhar. */
+.niche-grid.apoios-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.apoios-grid .niche-card {
+  min-height: 0;
+  padding: clamp(26px, 2.4vw, 36px);
+}
+
+.apoios-grid .niche-card h3 {
+  margin-top: 22px;
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
+  line-height: 1.15;
+}
+
+.apoios-grid .niche-card p {
+  margin-top: 14px;
+}
+
+@media (max-width: 1080px) {
+  .niche-grid.apoios-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .niche-grid.apoios-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero: a frase nova é mais longa que a antiga, precisa de corpo menor
+   para cada linha caber inteira (18/11/2026) */
+.hero-title h1 {
+  font-size: clamp(2.9rem, 7.3vw, 7rem);
 }
